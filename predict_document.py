@@ -8,9 +8,9 @@ from pdf2image import convert_from_path
 
 model = tf.keras.models.load_model("document_classifier_model.h5", compile=False)
 
-class_names = ['id_proof','invoice','resume','salary_slip']
+class_names = ['aadhar_card', 'invoice', 'pan_card', 'resume', 'salary_slip']
 
-file_path = r"D:\Internship\test_documents\doc2.jpg"
+file_path = r"D:\Internship\test_documents\doc5.jpg"
 
 poppler_path = r"C:\poppler-23.11.0\Library\bin"
 
@@ -31,6 +31,17 @@ prediction = model.predict(img_array, verbose=0)[0]
 for i, prob in enumerate(prediction):
     print(class_names[i], ":", prob)
 
-predicted_class = class_names[np.argmax(prediction)]
+# get highest probability
+max_index = np.argmax(prediction)
+confidence = prediction[max_index]
 
-print("\nFinal Prediction:", predicted_class)
+# threshold for unknown documents
+threshold = 0.6
+
+if confidence < threshold:
+    predicted_class = "other"
+else:
+    predicted_class = class_names[max_index]
+
+print("\nConfidence:", confidence)
+print("Final Prediction:", predicted_class)
