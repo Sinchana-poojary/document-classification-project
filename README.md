@@ -20,27 +20,7 @@ Salary Slip
 Aadhar card
 PAN card
 
-If the prediction confidence is low, the system outputs:other
-
-Project Structure
-Internship/
-│
-├── dataset_balanced/
-│   ├── resume/
-│   ├── invoice/
-│   ├── salary_slip/
-│   ├── aadhar_card/
-│   ├── pan_card/
-│
-├── test_documents/
-│
-├── train_model.py
-├── predict_document.py
-├── test_folder_prediction.py
-│
-├── document_classifier_model.h5
-│
-└── README.md
+If the prediction confidence is low, the system outputs : other
 
 Installation
 Install the required dependencies:
